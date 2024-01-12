@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+</head>
+<body>
+    
+    <form action="http://127.0.0.1:5500/web/login.html" onsubmit="return sub()" id="form">
+        <h1>Registration Form</h1>
+    <input type="text" placeholder="Name" id="n" ><br>
+    <span id="name" style="color: red;"></span><br>
+    <input type="text" placeholder="Mobile Number" id="m" ><br>
+    <span id="mno" style="color: red;"></span><br>
+    <input type="text" placeholder="Email" id="e"><br>
+    <span id="em" style="color: red;"></span><br>
+    <input type="password" placeholder="Password" id="p" ><br>
+    <span id="pass" style="color: red;"></span><br>
+    <input type="password" placeholder="Confirm Password" id="cnf"><br>
+    <span id="cpass" style="color: red;"></span><br>
+    <button type="submit">Register</button><br>
+</form>
+    
+</body>
+<style>
+     h1{
+        color: gold ;
+        font-size: 30px;
+     }
+     button:hover{
+        color: red;
+        background-color: green;
+     }
+    form{
+        border: 5px solid cornflowerblue;
+        width: 30%;
+        margin-left: 35%;
+        margin-top: 8%;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 1px 1px 5px 5px darkblue;
+    }
+    input{
+        width: 80%;
+        padding: 8px;
+        margin: 2%;
+        text-align: center;
+        text-transform: capitalize;
+        border-radius: 25px;
+        border: 2px solid cornflowerblue;
+        box-shadow: 1px 1px 2px 2px darkblue;
+    }
+    button{
+        text-transform: capitalize;
+        width: 75%;
+        margin: 2%;
+        padding: 2%;
+        border-radius: 25px;
+        cursor: pointer;
+        color: blue;
+        background-color: cyan;
+        border: 2px solid cornflowerblue;
+        box-shadow: 1px 1px 2px 2px darkblue;
+    }
+    body{
+        background-image: url(https://th.bing.com/th/id/R.3efd68311b9491dbfb9b10820bc1f0c2?rik=xWKgYSBHnKUiMg&riu=http%3a%2f%2ffc02.deviantart.net%2ffs11%2fi%2f2006%2f242%2fa%2ff%2fBlue_flames_by_raptorNL.png&ehk=uauJmvPYJd76Cm%2bHBn7SL3rp2qV8XYupTWNWgRBSC2Q%3d&risl=&pid=ImgRaw&r=0);
+    }
+</style>
+<script>
+    let n = document.getElementById("n");
+    let m = document.getElementById("m");
+    let e = document.getElementById("e");
+    let p = document.getElementById("p");
+    let cnf = document.getElementById("cnf");
+    let name = document.getElementById("name");
+    let mno = document.getElementById("mno");
+    let em = document.getElementById("em");
+    let pass = document.getElementById("pass");
+    let cpass = document.getElementById("cpass");
+    const phoneRegex = /^(?:\(\d{3}\)|\d{3})[-.\s]?\d{3}[-.\s]?\d{4}$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    function sub(){
+        if(n.value === ""){
+            name.innerHTML = "please enter your name"
+            return false;
+        }else if(m.value === ""){
+            mno.innerHTML = "please enter your mobile no"
+            return false;
+        }else if(!phoneRegex.test(m.value)){
+            mno.innerHTML = "please enter correct mobile number"
+            return false;
+        }else if(e.value === ""){
+            em.innerHTML = "please enter your email"
+            return false;
+        }else if(!emailRegex.test(e.value)){
+            em.innerHTML= "please enter corect email"
+            return false;
+        }else if(p.value===""){
+            pass.innerHTML= "please enter your password"
+            return false;
+        }else if(cnf.value===""){
+            cpass.innerHTML = "please confirm your password"
+            return false;
+        }else if(!password.test(p.value)){
+            pass.innerHTML= "enter strong password"
+            return false;
+        }else if(p.value !== cnf.value){
+            cpass.innerHTML = "password does not match"
+            return false;
+        }else{
+            window.location="http://127.0.0.1:5500/web/login.html"
+            return true;
+        }
+       
+    }
+    document.getElementById("n");
+    n.addEventListener("input",function(){
+        name.textContent = "";
+    })
+    document.getElementById("m");
+    m.addEventListener("input",function(){
+        mno.textContent = ""; 
+    })
+    document.getElementById("p");
+    p.addEventListener("input",function(){
+        pass.textContent = "";
+    })
+    document.getElementById("cnf");
+    cnf.addEventListener("input",function(){
+        cpass.textContent = ""; 
+    })
+    document.getElementById("e");
+    e.addEventListener("input",function(){
+        em.textContent = ""; 
+    })
+
+</script>
+</html>
